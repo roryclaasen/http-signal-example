@@ -21,16 +21,12 @@ app.MapPost("/{endpoint}", async delegate (HttpContext context)
 
     using (StreamReader reader = new(context.Request.Body, Encoding.UTF8))
     {
-
-        
         storage[endpoint].Add(new
         {
             Time = DateTime.UtcNow,
             Path = context.Request.Path.Value,
             context.Request.Query,
             Body = JsonSerializer.Deserialize(await reader.ReadToEndAsync(), typeof(object))
-
-
         });
 
         return $"You just posted to {endpoint}";
