@@ -5,7 +5,7 @@ using System.Text.Json;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-var storage = new ConcurrentDictionary<string, List<object>>();
+var storage = new ConcurrentDictionary<string, ConcurrentBag<object>>();
 
 app.MapGet("/", () => storage);
 
@@ -16,7 +16,7 @@ app.MapPost("/{endpoint}", async delegate (HttpContext context)
     string endpoint = context.Request.RouteValues["endpoint"]?.ToString() ?? "unknown";
     if (!storage.ContainsKey(endpoint))
     {
-        storage.GetOrAdd(endpoint, new List<object>());
+        storage.GetOrAdd(endpoint, new ConcurrentBag<object>());
     }
 
     using (StreamReader reader = new(context.Request.Body, Encoding.UTF8))
