@@ -20,6 +20,10 @@ This is an example solution of how you could use a cheap http post to signal to 
 
 6. Observe the request via the web browser. ([http://localhost:5175/](http://localhost:5175/))
 
+### Express Server
+
+Also included is a simple express server that can be used instead of using the ASP.Net Core server.
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` file for more information.
