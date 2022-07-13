@@ -4,25 +4,29 @@ This is an example solution of how you could use a cheap http post to signal to 
 
 ## Usage
 
-1. Clone the repository
+### Clone
 
-   ```text
-   git clone --recursive https://github.com/roryclaasen/http-signal-example.git
-   ```
+```text
+git clone --recursive https://github.com/roryclaasen/http-signal-example.git
+```
 
-2. Navigate to the directory `Http-Signal-Example` and open the visual studio solution `Http-Signal-Example.sln`
+### Running the server
 
-3. Build both the TestApplication and the WebServer projects.
+1. Open and build the `Http-Signal-Example.sln` solution
 
-4. Run the WebServer project.
+2. Build and start the WebServer project.
 
-5. Run the TestApplication project.
+#### Express Server
 
-6. Observe the request via the web browser. ([http://localhost:5175/](http://localhost:5175/))
+Also included in this repository is a simple express server that can be used instead of using the ASP.Net Core server.
 
-### Express Server
+### Running the test application
 
-Also included is a simple express server that can be used instead of using the ASP.Net Core server.
+1. Open and build the `Http-Signal-Example.sln` solution
+
+2. Build and start the TestApplication project.
+
+3. Observe the request via the web browser. ([http://localhost:5175/](http://localhost:5175/))
 
 ## License
 
