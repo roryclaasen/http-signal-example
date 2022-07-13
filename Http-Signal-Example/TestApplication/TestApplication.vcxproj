@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build"
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -22,7 +21,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -80,12 +79,12 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\zeroc.openssl.v142.1.1.1\build\native\zeroc.openssl.v142.targets" Condition="Exists('..\packages\zeroc.openssl.v142.1.1.1\build\native\zeroc.openssl.v142.targets')" />
+    <Import Project="..\packages\zeroc.openssl.v143.1.1.1.1\build\native\zeroc.openssl.v143.targets" Condition="Exists('..\packages\zeroc.openssl.v143.1.1.1.1\build\native\zeroc.openssl.v143.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\zeroc.openssl.v142.1.1.1\build\native\zeroc.openssl.v142.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\zeroc.openssl.v142.1.1.1\build\native\zeroc.openssl.v142.targets'))" />
+    <Error Condition="!Exists('..\packages\zeroc.openssl.v143.1.1.1.1\build\native\zeroc.openssl.v143.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\zeroc.openssl.v143.1.1.1.1\build\native\zeroc.openssl.v143.targets'))" />
   </Target>
 </Project>
