@@ -1,13 +1,17 @@
 #include <iostream>
 
+#define CPPHTTPLIB_OPENSSL_SUPPORT
 #include <httplib.h>
 
-void Post(std::string path, std::string data)
+void Post(std::string host, std::string path, std::string data)
 {
     try {
         std::cout << "Post to " << path << "\n";
 
-        httplib::Client client("http://localhost:5175");
+        httplib::Client client(host);
+#ifdef CPPHTTPLIB_OPENSSL_SUPPORT
+        client.enable_server_certificate_verification(false);
+#endif
 
         auto response = client.Post(path.c_str(), data, "application/json");
         if (response.error() == httplib::Error::Success)
@@ -33,11 +37,19 @@ std::string MakeMessage(std::string message)
 
 int main()
 {
-    Post("/data", MakeMessage("This is a blocking call"));
+    const auto httpHost = "http://localhost:5175";
 
-    std::thread start_thread([] { Post("/start", MakeMessage("This is the start of the program")); });
-    std::thread crash_thread([] { Post("/crash", MakeMessage("Oh no you crashed")); });
+    Post(httpHost, "/data", MakeMessage("This is a blocking call"));
+
+    std::thread start_thread([httpHost] { Post(httpHost, "/start", MakeMessage("This is the start of the program")); });
+    std::thread crash_thread([httpHost] { Post(httpHost, "/crash", MakeMessage("Oh no you crashed")); });
 
     start_thread.join();
     crash_thread.join();
+
+#ifdef CPPHTTPLIB_OPENSSL_SUPPORT
+    const auto httpsHost = "https://localhost:7286";
+
+    Post(httpsHost, "/data", MakeMessage("This came from https"));
+#endif
 }
